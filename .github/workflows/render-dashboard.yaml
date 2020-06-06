@@ -23,10 +23,8 @@ jobs:
       - name: Render Dashboard
         run: Rscript -e 'rmarkdown::render("flex_test.Rmd")'
         
-      - name: Commit results
-        run: |
-          git config user.email "tvroylandt@gmail.com"
-          git config user.name "Thomas Vroylandt"
-          git add .
-          git commit -m 'Re-build dahsboard'
-          git push origin
+      - name: Upload results
+        uses: actions/upload-artifact@master
+        with:
+          name: results
+          path: flex_test.html
