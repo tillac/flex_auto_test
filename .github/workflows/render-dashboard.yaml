@@ -24,7 +24,8 @@ jobs:
         run: |
           dir.create("6d2a064f588d60c36b982842ea9557f96fa8f286")
           rmarkdown::render(input = "flex_test.Rmd", 
-                            output = "6d2a064f588d60c36b982842ea9557f96fa8f286/index.html")        
+                            output_dir = "6d2a064f588d60c36b982842ea9557f96fa8f286",
+                            output_file = "index.html")        
         shell: Rscript {0}
 
       - name: Commit results
