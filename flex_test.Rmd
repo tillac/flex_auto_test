@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    css: css/style.css
 ---
 
 ```{r setup, include=FALSE}
@@ -12,13 +13,17 @@ library(tidyverse)
 library(reactable)
 ```
 
+```{r import_data}
+iris_bis <- read_rds("data/iris.rds")
+```
+
 Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart A
 
 ```{r}
-ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+ggplot(iris_bis, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point(size = 2)
 ```
 
@@ -28,7 +33,6 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-reactable(head(iris))
-
+reactable(head(iris_bis))
 ```
 
