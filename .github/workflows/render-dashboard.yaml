@@ -27,5 +27,6 @@ jobs:
         run: |
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
-          git commit flex_test.html -m 'Re-build dahsboard'
+          git add .
+          git commit -m 'Re-build dahsboard'
           git push origin
