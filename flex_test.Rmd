@@ -29,5 +29,6 @@ Column {data-width=350}
 
 ```{r}
 reactable(head(iris))
+
 ```
 
