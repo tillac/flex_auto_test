@@ -34,7 +34,7 @@ jobs:
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
           git checkout -b netlify
-          git add output = "6d2a064f588d60c36b982842ea9557f96fa8f286/index.html" index.html
+          git add 6d2a064f588d60c36b982842ea9557f96fa8f286/index.html index.html
           git commit -m 'Update dahsboard'
           git push -u origin netlify --force
           
