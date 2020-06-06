@@ -22,15 +22,14 @@ jobs:
         
       - name: Render Dashboard
         run: Rscript -e 'rmarkdown::render("flex_test.Rmd")'
-        
-      - uses: actions/checkout@v2
-        with:
-          ref: netlify
-        
+
       - name: Commit results
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
+          git checkout netlify
           git add .
           git commit -m 'Re-build dahsboard'
           git push origin
