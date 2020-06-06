@@ -19,7 +19,7 @@ jobs:
           remotes::install_cran("rmarkdown")
           remotes::install_cran("flexdashboard")
           remotes::install_cran("reactable")
-        shell: Rscript {0}*
+        shell: Rscript {0}
         
       - name: Render README
         run: Rscript -e 'rmarkdown::render("flex_test.Rmd")'
