@@ -29,9 +29,9 @@ jobs:
         run: |
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
-          git checkout netlify
-          git add .
+          git checkout -b netlify
+          git add flex_test.html
           git commit -m 'Re-build dahsboard'
-          git push origin
+          git push -u origin netlify
           
           
