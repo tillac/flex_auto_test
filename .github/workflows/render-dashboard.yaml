@@ -22,7 +22,6 @@ jobs:
         
       - name: Render Dashboard
         run: |
-          dir.create("6d2a064f588d60c36b982842ea9557f96fa8f286")
           rmarkdown::render(input = "flex_test.Rmd", 
                             output_dir = "6d2a064f588d60c36b982842ea9557f96fa8f286",
                             output_file = "index.html")        
@@ -35,7 +34,7 @@ jobs:
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
           git checkout -b netlify
-          git add 6d2a064f588d60c36b982842ea9557f96fa8f286/index.html index.html
+          git add *.html
           git commit -m 'Update dahsboard'
           git push -u origin netlify --force
           
