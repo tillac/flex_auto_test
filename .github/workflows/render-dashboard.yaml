@@ -32,6 +32,6 @@ jobs:
           git checkout -b netlify
           git add flex_test.html
           git commit -m 'Re-build dahsboard'
-          git push -u origin netlify
+          git push -u origin netlify --force
           
           
