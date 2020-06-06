@@ -6,15 +6,24 @@ name: Render dashboard
 jobs:
   render:
     name: Render Dashboard
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
+    container: rocker/tidyverse
     steps:
       - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@master
+      
       - uses: r-lib/actions/setup-pandoc@master
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown", "tidyverse", "flextable", "reactable"))'
+      
+      - name: Install dependencies
+        run: |
+          install.packages("remotes")
+          remotes::install_cran("rmarkdown")
+          remotes::install_cran("flexdashboard")
+          remotes::install_cran("reactable")
+        shell: Rscript {0}*
+        
       - name: Render README
         run: Rscript -e 'rmarkdown::render("flex_test.Rmd")'
+        
       - name: Commit results
         run: |
           git commit -m 'Re-build dahsboard' || echo "No changes to commit"
