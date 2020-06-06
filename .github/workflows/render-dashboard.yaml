@@ -15,7 +15,6 @@ jobs:
       
       - name: Install dependencies
         run: |
-          install.packages("remotes")
           remotes::install_cran("rmarkdown")
           remotes::install_cran("flexdashboard")
           remotes::install_cran("reactable")
@@ -26,5 +25,5 @@ jobs:
         
       - name: Commit results
         run: |
-          git commit "flex_test.html" -m 'Re-build dahsboard'
+          git commit flex_test.html -m 'Re-build dahsboard'
           git push origin
