@@ -24,11 +24,14 @@ jobs:
         run: Rscript -e 'rmarkdown::render("flex_test.Rmd")'
         
       - name: Commit results
-        run: |
-          git config user.email "tvroylandt@gmail.com"
-          git config user.name "Thomas Vroylandt"
-          git add .
-          git commit -m 'Re-build dahsboard'
-          git push -u origin netlify
-          
-          
+        uses: github-actions-x/commit@v2.6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          push-branch: 'netlify'
+          commit-message: 'publish dashboard'
+          force-add: 'true'
+          files: flex_test.html
+          name: Thomas Vroylandt
+          email: tvroylandt@gmail.com
+            
+            
