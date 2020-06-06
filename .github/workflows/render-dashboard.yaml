@@ -29,6 +29,6 @@ jobs:
           git config user.name "Thomas Vroylandt"
           git add .
           git commit -m 'Re-build dahsboard'
-          git push origin
+          git push origin netlify
           
           
