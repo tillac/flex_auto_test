@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_cran("rmarkdown")
-          remotes::install_cran("flexdashboard")
+          remotes::install_github("tvroylandt/flexdashboard")
           remotes::install_cran("reactable")
         shell: Rscript {0}
         
@@ -32,7 +32,7 @@ jobs:
 
       - name: Commit results
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.email "tvroylandt@gmail.com"
           git config user.name "Thomas Vroylandt"
