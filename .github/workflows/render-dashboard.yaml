@@ -13,6 +13,12 @@ jobs:
       
       - uses: r-lib/actions/setup-pandoc@master
       
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+      
       - name: Install dependencies
         run: |
           remotes::install_cran("rmarkdown")
