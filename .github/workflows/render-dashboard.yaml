@@ -13,18 +13,18 @@ jobs:
       
       - uses: r-lib/actions/setup-pandoc@master
       
-      - name: Cache R packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
-      
       - name: Install dependencies
         run: |
           remotes::install_cran("rmarkdown")
           remotes::install_github("tvroylandt/flexdashboard")
           remotes::install_cran("reactable")
         shell: Rscript {0}
+        
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: r-${{ hashFiles('DESCRIPTION') }}
         
       - name: Render Dashboard and remove base html
         run: |
